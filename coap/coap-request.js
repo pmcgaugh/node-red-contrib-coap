@@ -94,7 +94,7 @@ module.exports = function (RED) {
                 function _onResponseData(data) {
                     if (config["raw-buffer"]) {
                         _send(data);
-                    if (res.headers["Content-Format"] === "application/octet-stream") {
+                    } else if (res.headers["Content-Format"] === "application/octet-stream") {
                         _send(data);
                     } else if (res.headers["Content-Format"] === "text/plain") {
                         _send(data.toString());
