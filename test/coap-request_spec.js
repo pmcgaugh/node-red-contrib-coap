@@ -699,6 +699,13 @@ describe("CoapRequestNode", function () {
                     });
                 },
             },
+            {
+                format: "application/octect-stream",
+                message: { thisIs: "binary" },
+                decode: function (buf) {
+                    return Promise.resolve(buf);
+                },
+            },
         ];
 
         for (i = 0; i < serializeFormatTests.length; ++i) {
@@ -780,6 +787,13 @@ describe("CoapRequestNode", function () {
                 format: "application/cbor",
                 message: { thisIs: "CBOR" },
                 encode: cbor.encode,
+            },
+            {
+                format: "application/octet-stream",
+                message: { thisIs: "binary" },
+                encode: function (b) {
+                    return b;
+                },
             },
             {
                 format: "application/link-format",
